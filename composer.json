@@ -1,6 +1,6 @@
 {
     "name": "famelo/scaff",
-    "type": "flow-package",
+    "type": "typo3-flow-package",
     "description": "Application Scaffold",
     "license": "LGPL-3.0+",
     "version": "0.1.0-dev",
