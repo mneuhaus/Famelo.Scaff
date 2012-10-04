@@ -1,16 +1,1 @@
-{
-    "name": "famelo/scaff",
-    "type": "typo3-flow-package",
-    "description": "Application Scaffold",
-    "license": "LGPL-3.0+",
-    "version": "0.1.0-dev",
-    "require": {
-        "typo3/flow-composer-installers": "*",
-        "typo3/flow": "*"
-    },
-    "autoload": {
-        "psr-0": {
-            "Famelo\\Scaff": "Classes"
-        }
-    }
-}
+{"name":"famelo\/scaff","type":"typo3-flow-package","description":"","version":"","require":{"typo3\/flow":"*"},"autoload":{"psr-0":{"Famelo\\Scaff":"Classes"}}}
