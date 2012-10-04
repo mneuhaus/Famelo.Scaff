@@ -6,14 +6,14 @@ namespace Famelo\Scaff\Controller;
  *                                                                        *
  *                                                                        */
 
-use TYPO3\FLOW3\Annotations as FLOW3;
+use TYPO3\Flow\Annotations as Flow;
 
 /**
  * Standard controller for the Famelo.Admin package 
  *
- * @FLOW3\Scope("singleton")
+ * @Flow\Scope("singleton")
  */
-class EmptyController extends \TYPO3\FLOW3\Mvc\Controller\ActionController {
+class EmptyController extends \TYPO3\Flow\Mvc\Controller\ActionController {
 
 	/**
 	 * Index action

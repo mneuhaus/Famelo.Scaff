@@ -11,7 +11,7 @@ namespace Famelo\Scaff\ViewHelpers\Link;
  * The TYPO3 project - inspiring people to share!                         *
  *                                                                        */
 
-use TYPO3\FLOW3\Annotations as FLOW3;
+use TYPO3\Flow\Annotations as Flow;
 
 /**
  * A view helper for creating links to modules.
@@ -26,12 +26,12 @@ use TYPO3\FLOW3\Annotations as FLOW3;
  * <a href="typo3/system/userexpose">some link</a>
  * (depending on current node, format etc.)
  *
- * @FLOW3\Scope("prototype")
+ * @Flow\Scope("prototype")
  */
 class ModuleViewHelper extends \TYPO3\Fluid\ViewHelpers\Link\ActionViewHelper {
     /**
-     * @var \TYPO3\FLOW3\Configuration\ConfigurationManager
-     * @FLOW3\Inject
+     * @var \TYPO3\Flow\Configuration\ConfigurationManager
+     * @Flow\Inject
      */
     protected $configurationManager;
 
@@ -54,7 +54,7 @@ class ModuleViewHelper extends \TYPO3\Fluid\ViewHelpers\Link\ActionViewHelper {
 	 * @api
 	 */
 	public function render($action = NULL, $arguments = array(), $controller = 'standard', $package = NULL, $subpackage = NULL, $section = '', $format = '',  array $additionalParams = array(), $addQueryString = FALSE, array $argumentsToBeExcludedFromQueryString = array(), $path = NULL) {
-		$moduleConfiguration = $this->configurationManager->getConfiguration(\TYPO3\FLOW3\Configuration\ConfigurationManager::CONFIGURATION_TYPE_SETTINGS, 'Famelo.Scaff.modules.' . $path);
+		$moduleConfiguration = $this->configurationManager->getConfiguration(\TYPO3\Flow\Configuration\ConfigurationManager::CONFIGURATION_TYPE_SETTINGS, 'Famelo.Scaff.modules.' . $path);
 
 		if (isset($moduleConfiguration['defaultControllerArguments'])) {
 			$arguments = $moduleConfiguration['defaultControllerArguments'];
