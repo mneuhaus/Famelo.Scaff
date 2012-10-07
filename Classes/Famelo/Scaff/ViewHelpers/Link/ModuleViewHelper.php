@@ -56,6 +56,12 @@ class ModuleViewHelper extends \TYPO3\Fluid\ViewHelpers\Link\ActionViewHelper {
 	public function render($action = NULL, $arguments = array(), $controller = 'standard', $package = NULL, $subpackage = NULL, $section = '', $format = '',  array $additionalParams = array(), $addQueryString = FALSE, array $argumentsToBeExcludedFromQueryString = array(), $path = NULL) {
 		$moduleConfiguration = $this->configurationManager->getConfiguration(\TYPO3\Flow\Configuration\ConfigurationManager::CONFIGURATION_TYPE_SETTINGS, 'Famelo.Scaff.modules.' . $path);
 
+		if (isset($moduleConfiguration['arguments'])) {
+			$arguments = array(
+				"--scaffRuntime" => $moduleConfiguration['arguments']
+			);
+		}
+
 		if (isset($moduleConfiguration['defaultControllerArguments'])) {
 			$arguments = $moduleConfiguration['defaultControllerArguments'];
 		}

@@ -34,7 +34,7 @@
           <div class="nav-collapse collapse">
             <ul class="nav">
               <f:for each="{settings.modules}" key="module" as="moduleConfiguration">
-                <li{f:if(condition: '{rootModule} == {module}', then: ' class="active"')}>
+                <li{f:if(condition: '{currentModule} == {module}', then: ' class="active"')}>
                   <s:link.module path="{module}">{moduleConfiguration.label}</s:link.module>
                 </li>
               </f:for>
