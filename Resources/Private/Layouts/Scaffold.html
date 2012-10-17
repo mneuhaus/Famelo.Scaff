@@ -33,11 +33,13 @@
           <f:link.action action="index" class="brand">Project name</f:link.action>
           <div class="nav-collapse collapse">
             <ul class="nav">
+              <s:setNamespace namespace="content">
               <f:for each="{settings.modules}" key="module" as="moduleConfiguration">
                 <li{f:if(condition: '{currentModule} == {module}', then: ' class="active"')}>
-                  <s:link.module path="{module}">{moduleConfiguration.label}</s:link.module>
+                  <s:link.module path="{module}" namespace="content">{moduleConfiguration.label}</s:link.module>
                 </li>
               </f:for>
+              </s:setNamespace>
             </ul>
           </div>
         </div>

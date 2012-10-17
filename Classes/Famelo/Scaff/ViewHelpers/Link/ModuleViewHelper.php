@@ -28,11 +28,11 @@ use TYPO3\Flow\Annotations as Flow;
  *
  */
 class ModuleViewHelper extends \TYPO3\Fluid\ViewHelpers\Link\ActionViewHelper {
-    /**
-     * @var \TYPO3\Flow\Configuration\ConfigurationManager
-     * @Flow\Inject
-     */
-    protected $configurationManager;
+	/**
+	 * @var \TYPO3\Flow\Configuration\ConfigurationManager
+	 * @Flow\Inject
+	 */
+	protected $configurationManager;
 
 	/**
 	 * Render the link.
@@ -48,16 +48,17 @@ class ModuleViewHelper extends \TYPO3\Fluid\ViewHelpers\Link\ActionViewHelper {
 	 * @param boolean $addQueryString If set, the current query parameters will be kept in the URI
 	 * @param array $argumentsToBeExcludedFromQueryString arguments to be removed from the URI. Only active if $addQueryString = TRUE
 	 * @param string $path
+	 * @param string $namspace
 	 * @return string The rendered link
 	 * @throws \TYPO3\Fluid\Core\ViewHelper\Exception
 	 * @api
 	 */
-	public function render($action = NULL, $arguments = array(), $controller = 'standard', $package = NULL, $subpackage = NULL, $section = '', $format = '',  array $additionalParams = array(), $addQueryString = FALSE, array $argumentsToBeExcludedFromQueryString = array(), $path = NULL) {
+	public function render($action = NULL, $arguments = array(), $controller = 'standard', $package = NULL, $subpackage = NULL, $section = '', $format = '',  array $additionalParams = array(), $addQueryString = FALSE, array $argumentsToBeExcludedFromQueryString = array(), $path = NULL, $namespace = 'subrequest') {
 		$moduleConfiguration = $this->configurationManager->getConfiguration(\TYPO3\Flow\Configuration\ConfigurationManager::CONFIGURATION_TYPE_SETTINGS, 'Famelo.Scaff.modules.' . $path);
-
+		
 		if (isset($moduleConfiguration['arguments'])) {
 			$arguments = array(
-				"--scaffRuntime" => $moduleConfiguration['arguments']
+				'--' . $namespace => $moduleConfiguration['arguments']
 			);
 		}
 
@@ -68,7 +69,7 @@ class ModuleViewHelper extends \TYPO3\Fluid\ViewHelpers\Link\ActionViewHelper {
 		if (isset($moduleConfiguration['defaultController'])) {
 			$controller = $moduleConfiguration['defaultController'];
 		}
-		$arguments["module"] = $path;
+		$arguments['module'] = $path;
 
 		return parent::render($action, $arguments, $controller, $package, $subpackage, $section, $format, $additionalParams, $addQueryString, $argumentsToBeExcludedFromQueryString);
 	}

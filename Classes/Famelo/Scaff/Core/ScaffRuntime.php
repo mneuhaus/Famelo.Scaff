@@ -53,10 +53,12 @@ class ScaffRuntime {
 	protected $response;
 
 	/**
+	 * @param string $namespace
 	 * @param \TYPO3\Flow\Mvc\ActionRequest $parentRequest
 	 * @param \TYPO3\Flow\Http\Response $response
 	 */
-	public function __construct(\TYPO3\Flow\Mvc\ActionRequest $parentRequest, \TYPO3\Flow\Http\Response $response) {
+	public function __construct($namespace, \TYPO3\Flow\Mvc\ActionRequest $parentRequest, \TYPO3\Flow\Http\Response $response) {
+		$this->namespace = $namespace;
 		$arguments = $parentRequest->getPluginArguments();
 		$this->request = new ActionRequest($parentRequest);
 		$this->request->setArgumentNamespace('--' . $this->namespace);
@@ -67,7 +69,7 @@ class ScaffRuntime {
 		}
 
 		$this->request->setFormat('html');
-		// TODO: the response below should be an MVC response
+			// TODO: the response below should be an MVC response
 		$this->response = new \TYPO3\Flow\Http\Response($response);
 	}
 

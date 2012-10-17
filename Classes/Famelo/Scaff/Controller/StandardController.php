@@ -26,8 +26,8 @@ class StandardController extends \TYPO3\Flow\Mvc\Controller\ActionController {
 	 * @return void
 	 */
 	public function indexAction() {
-		$scaffRuntime = new \Famelo\Scaff\Core\ScaffRuntime($this->request, $this->response);
-		$this->view->assign('content', $scaffRuntime->execute());
+		#$scaffRuntime = new \Famelo\Scaff\Core\ScaffRuntime($this->request, $this->response);
+		#$this->view->assign('content', $scaffRuntime->execute());
 
 		if ($this->request->hasArgument("module")) {
 			$this->view->assign("currentModule", $this->request->getArgument("module"));

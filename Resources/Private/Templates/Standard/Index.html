@@ -1,5 +1,6 @@
 <f:layout name="Scaffold" />
+{namespace s=Famelo\Scaff\ViewHelpers}
 
 <f:section name="content">
-    <f:format.raw>{content}</f:format.raw>
+    <s:subRequest namespace="content" />
 </f:section>
