@@ -26,7 +26,6 @@ use TYPO3\Flow\Annotations as Flow;
  * <a href="typo3/system/userexpose">some link</a>
  * (depending on current node, format etc.)
  *
- * @Flow\Scope("prototype")
  */
 class ModuleViewHelper extends \TYPO3\Fluid\ViewHelpers\Link\ActionViewHelper {
     /**
@@ -69,6 +68,7 @@ class ModuleViewHelper extends \TYPO3\Fluid\ViewHelpers\Link\ActionViewHelper {
 		if (isset($moduleConfiguration['defaultController'])) {
 			$controller = $moduleConfiguration['defaultController'];
 		}
+		$arguments["module"] = $path;
 
 		return parent::render($action, $arguments, $controller, $package, $subpackage, $section, $format, $additionalParams, $addQueryString, $argumentsToBeExcludedFromQueryString);
 	}
