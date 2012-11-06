@@ -25,12 +25,14 @@ namespace Famelo\Scaff\ViewHelpers;
 class SubRequestViewHelper extends \TYPO3\Fluid\Core\ViewHelper\AbstractViewHelper {
 	/**
 	 * @param string $namespace
+	 * @param string $defaultController
 	 * @return string
 	 */
-	public function render($namespace = 'subrequest') {
+	public function render($namespace = 'subrequest', $defaultController = 'Famelo\\Scaff\\Controller\\EmptyController') {
 		$request = $this->controllerContext->getRequest();
 		$response = $this->controllerContext->getResponse();
 		$scaffRuntime = new \Famelo\Scaff\Core\ScaffRuntime($namespace, $request, $response);
+		$scaffRuntime->setDefaultExposeControllerClassName($defaultController);
 		return $scaffRuntime->execute();
 	}
 }

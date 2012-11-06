@@ -49,12 +49,13 @@ class ModuleViewHelper extends \TYPO3\Fluid\ViewHelpers\Link\ActionViewHelper {
 	 * @param array $argumentsToBeExcludedFromQueryString arguments to be removed from the URI. Only active if $addQueryString = TRUE
 	 * @param string $path
 	 * @param string $namspace
+	 * @param string $settingsPath
 	 * @return string The rendered link
 	 * @throws \TYPO3\Fluid\Core\ViewHelper\Exception
 	 * @api
 	 */
-	public function render($action = NULL, $arguments = array(), $controller = 'standard', $package = NULL, $subpackage = NULL, $section = '', $format = '',  array $additionalParams = array(), $addQueryString = FALSE, array $argumentsToBeExcludedFromQueryString = array(), $path = NULL, $namespace = 'subrequest') {
-		$moduleConfiguration = $this->configurationManager->getConfiguration(\TYPO3\Flow\Configuration\ConfigurationManager::CONFIGURATION_TYPE_SETTINGS, 'Famelo.Scaff.modules.' . $path);
+	public function render($action = NULL, $arguments = array(), $controller = 'standard', $package = NULL, $subpackage = NULL, $section = '', $format = '',  array $additionalParams = array(), $addQueryString = FALSE, array $argumentsToBeExcludedFromQueryString = array(), $path = NULL, $namespace = 'subrequest', $settingsPath = 'Famelo.Scaff.modules') {
+		$moduleConfiguration = $this->configurationManager->getConfiguration(\TYPO3\Flow\Configuration\ConfigurationManager::CONFIGURATION_TYPE_SETTINGS, $settingsPath . '.' . $path);
 		
 		if (isset($moduleConfiguration['arguments'])) {
 			$arguments = array(
