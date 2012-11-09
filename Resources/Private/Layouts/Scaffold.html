@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     {namespace s=Famelo\Scaff\ViewHelpers}
+    {namespace d=Famelo\Demo\Admin\ViewHelpers}
     <meta charset="utf-8">
     <title>{settings.title}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -31,12 +32,33 @@
             <span class="icon-bar"></span>
           </a>
           <f:link.action action="index" class="brand">ADU</f:link.action>
-          <div class="nav-collapse collapse">
+          <div class="nav">
             <ul class="nav">
               <f:for each="{settings.modules}" key="module" as="moduleConfiguration">
-                <li{f:if(condition: '{currentModule} == {module}', then: ' class="active"')}>
-                  <s:link.module path="{module}" namespace="content">{moduleConfiguration.label}</s:link.module>
-                </li>
+
+                <f:if condition="{moduleConfiguration.submodules}">
+
+                  <f:then>
+                    <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown">{moduleConfiguration.label} <b class="caret"></b></a>
+                      <ul class="dropdown-menu">
+                        <f:for each="{moduleConfiguration.submodules}" key="submodule" as="submoduleConfiguration">
+                          <li>
+                            <s:link.module path="{module}.submodules.{submodule}" namespace="content">{submoduleConfiguration.label}</s:link.module>
+                          </li>
+                        </f:for>
+                      </ul>
+                    </li>
+                  </f:then>
+
+                  <f:else>
+                    <li{f:if(condition: '{currentModule} == {module}', then: ' class="active"')}>
+                      <s:link.module path="{module}" namespace="content">{moduleConfiguration.label}</s:link.module>
+                    </li>
+                  </f:else>
+
+                </f:if>
+
               </f:for>
             </ul>
           </div>
@@ -46,5 +68,6 @@
 
     <f:render section="content" />
 
+    <script src="{f:uri.resource(path: 'lib/bootstrap/js/bootstrap.min.js', package: 'Famelo.Scaff')}"></script>
   </body>
 </html>
