@@ -72,6 +72,10 @@ class ModuleViewHelper extends \TYPO3\Fluid\ViewHelpers\Link\ActionViewHelper {
 		}
 		$arguments['module'] = $path;
 
+		if ($action === NULL) {
+			$action = 'index';
+		}
+
 		return parent::render($action, $arguments, $controller, $package, $subpackage, $section, $format, $additionalParams, $addQueryString, $argumentsToBeExcludedFromQueryString);
 	}
 
